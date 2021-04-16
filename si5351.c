@@ -8,7 +8,12 @@
 #define	I2C_FNAME	"/dev/i2c-2"
 #define	SI5351_ADDR	0x60
 
-int	i2c_file,i;
+#ifndef SI5351A_REVB_REG_CONFIG_HEADER
+#define SI5351A_REVB_REG_CONFIG_HEADER
+
+#define SI5351A_REVB_REG_CONFIG_NUM_REGS				52
+
+int	i2c_file,i,j;
 
 void i2c_init()
 {
@@ -110,11 +115,11 @@ main()
 	i2c_init();
 	i2c_read(0);
 
-	i2c_write(3, 0xFF) //disable all outputs
+	i2c_write(3, 0xFF); //disable all outputs
 
 	//pull down all driver outputs
 	i = 0x00F1; //start register 16 -23
-	while i <= 0x0017
+	while (i <= 0x0017)
 	{
 		i2c_write(i,0x80);
 		i = i + 0x0001;
@@ -124,7 +129,7 @@ main()
 
 	//write registers 15-92 and 149-170
 	j=0;
-	while j < len(si5351a_revb_register_t)
+	while (j < len(si5351a_revb_register_t))
 	{
 		i2c_write(si5351a_revb_register_t[i]);
 		j +=1;
