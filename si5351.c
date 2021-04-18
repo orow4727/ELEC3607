@@ -108,7 +108,7 @@ int i2c_write(unsigned char reg,int val)
 int
 main()
 {
-	printf("hello")
+	printf("hello");
 	i2c_init();
 	i2c_read(0);
 	i2c_write(3, 0xFF); //disable all outputs
