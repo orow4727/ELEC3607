@@ -111,7 +111,7 @@ main()
 
 	i2c_init();
 	i2c_read(0);
-	i2c_write(3, 0xFF); //disable all outputs
+	i2c_write(0x0003, 0xFF); //disable all outputs
 	//pull down all driver outputs
 	i = 0x00F1; //start register 16 -23
 	while (i <= 0x0017)
@@ -130,4 +130,8 @@ main()
 		printf("%d\n", j );
 		j +=1;
 	}
+	//Apply PLL A and B soft reset
+	i2c_write(0x00B1,0xAC);
+	//enable output
+	i2c_write(0x0003, 0x00);
 }
