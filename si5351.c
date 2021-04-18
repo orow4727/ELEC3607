@@ -110,7 +110,8 @@ main()
 {
 	i2c_init();
 	i2c_read(0);
-
+	printf("Hello")
+	printf(si5351a_revb_registers[1].address);
 	i2c_write(3, 0xFF); //disable all outputs
 
 	//pull down all driver outputs
