@@ -125,11 +125,11 @@ main()
 		i = i + 0x0001;
 	}
 	//set interrupt masks
-	i2c_write(0x0002,0xF4) //0b11111000
+	i2c_write(0x0002,0xF4); //0b11111000
 
 	//write registers 15-92 and 149-170
 	j=0;
-	while (j < len(si5351a_revb_register_t))
+	while (j < sizeof si5351a_revb_register_t)
 	{
 		i2c_write(si5351a_revb_register_t[i]);
 		j +=1;
