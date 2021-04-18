@@ -127,7 +127,7 @@ main()
 	while (j <= 52)
 	{
 		i2c_write(si5351a_revb_registers[j].address,si5351a_revb_registers[j].value);
-		printf("%s\n", j );
+		printf("%d\n", j );
 		j +=1;
 	}
 }
