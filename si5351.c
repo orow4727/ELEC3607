@@ -7,7 +7,7 @@
 #define	I2C_FNAME	"/dev/i2c-2"
 #define	SI5351_ADDR	0x60
 
-#define SI5351A_REVB_REG_CONFIG_NUM_REGS				52
+#define SI5351A_REVB_REG_CONFIG_NUM_REGS				53
 
 typedef struct
 {
