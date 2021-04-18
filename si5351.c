@@ -131,7 +131,7 @@ main()
 	j=0;
 	while (j < 52)
 	{
-		i2c_write(si5351a_revb_register_t[i]);
+		i2c_write(SI5351A_REVB_REG_CONFIG_NUM_REGS[i]);
 		j +=1;
 	}
 }
