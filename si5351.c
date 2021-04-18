@@ -110,10 +110,7 @@ main()
 {
 	i2c_init();
 	i2c_read(0);
-	printf("Hello");
-	printf("%d",si5351a_revb_registers[1].address);
 	i2c_write(3, 0xFF); //disable all outputs
-
 	//pull down all driver outputs
 	i = 0x00F1; //start register 16 -23
 	while (i <= 0x0017)
@@ -126,10 +123,9 @@ main()
 
 	//write registers 15-92 and 149-170
 	j=0;
-	while (j < 52)
+	while (j <= 52)
 	{
-		printf("%d", si5351a_revb_registers[1].address);
-		//i2c_write(SI5351A_REVB_REG_CONFIG_NUM_REGS[i]);
+		i2c_write(si5351a_revb_registers[j].address,si5351a_revb_registers[j].value);
 		j +=1;
 	}
 }
