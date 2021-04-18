@@ -108,7 +108,7 @@ int i2c_write(unsigned char reg,int val)
 int
 main()
 {
-	printf("hello");
+
 	i2c_init();
 	i2c_read(0);
 	i2c_write(3, 0xFF); //disable all outputs
@@ -127,6 +127,7 @@ main()
 	while (j <= 52)
 	{
 		i2c_write(si5351a_revb_registers[j].address,si5351a_revb_registers[j].value);
+		printf("%s\n", j );
 		j +=1;
 	}
 }
