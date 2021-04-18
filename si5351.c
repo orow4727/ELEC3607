@@ -129,7 +129,7 @@ main()
 
 	//write registers 15-92 and 149-170
 	j=0;
-	while (j < sizeof si5351a_revb_register_t)
+	while (j < 52)
 	{
 		i2c_write(si5351a_revb_register_t[i]);
 		j +=1;
