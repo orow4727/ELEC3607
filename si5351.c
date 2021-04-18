@@ -7,7 +7,7 @@
 #define	I2C_FNAME	"/dev/i2c-2"
 #define	SI5351_ADDR	0x60
 
-#define SI5351A_REVB_REG_CONFIG_NUM_REGS				53
+#define SI5351A_REVB_REG_CONFIG_NUM_REGS				52
 
 typedef struct
 {
@@ -31,7 +31,6 @@ si5351a_revb_register_t const si5351a_revb_registers[SI5351A_REVB_REG_CONFIG_NUM
 	{ 0x0015, 0x8C },
 	{ 0x0016, 0x8C },
 	{ 0x0017, 0x8C },
-	{ 0x0018, 0x0A },
 	{ 0x001A, 0xAF },
 	{ 0x001B, 0xC8 },
 	{ 0x001C, 0x00 },
@@ -70,7 +69,7 @@ si5351a_revb_register_t const si5351a_revb_registers[SI5351A_REVB_REG_CONFIG_NUM
 	{ 0x00A4, 0x00 },
 	{ 0x00A5, 0x00 },
 	{ 0x00A6, 0xC3 },
-	{ 0x00B7, 0x52 },
+	{ 0x00B7, 0x92 },
 
 };
 
