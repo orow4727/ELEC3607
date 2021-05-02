@@ -615,6 +615,7 @@ int main(int argc, char *argv[])
     clock_t t0,t00;
     double tfano=0.0,treadwav=0.0,tcandidates=0.0,tsync0=0.0;
     double tsync1=0.0,tsync2=0.0,ttotal=0.0;
+    char output;
     
     struct result { char date[7]; char time[5]; double sync; double snr;
                     double dt; double freq; char message[23]; double drift;
@@ -821,8 +822,8 @@ int main(int argc, char *argv[])
         return ret;
     }
     //read wav file
-    FILE *output;
-    FILE *output = fopen("output.wav", "wb");
+    
+    output = fopen("output.wav", "wb");
 	
 	/* Write one second of a square wave of ~440hz to the buffer. */
 	uint16_t *buffer = malloc(44100 * sizeof(uint16_t));
