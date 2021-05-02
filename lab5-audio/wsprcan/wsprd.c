@@ -33,8 +33,7 @@
 #define NUM_CHANNELS 1
 #define SAMPLE_RATE 48000
 
-char* tw
-//
+
 
 #define max(x,y) ((x) > (y) ? (x) : (y))
 // Possible PATIENCE options: FFTW_ESTIMATE, FFTW_ESTIMATE_PATIENT,
