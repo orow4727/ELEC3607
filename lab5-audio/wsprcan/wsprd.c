@@ -32,6 +32,9 @@
 #include "tinywav.h"
 #define NUM_CHANNELS 1
 #define SAMPLE_RATE 48000
+
+#define TinyWav tw;
+#define tinyWav tw;
 //
 
 #define max(x,y) ((x) > (y) ? (x) : (y))
@@ -40,7 +43,7 @@
 #define PATIENCE FFTW_ESTIMATE
 fftw_plan PLAN1,PLAN2,PLAN3;
 
-TinyWav tw;
+
 
 unsigned char pr3[162]=
 {1,1,0,0,0,0,0,0,1,0,0,0,1,1,1,0,0,0,1,0,
@@ -821,7 +824,7 @@ int main(int argc, char *argv[])
     }
     //read wav file
 
-	output = tinywav_open_read(&tw, "path/to/input.wav", TW_SPLIT, TW_FLOAT32);
+	tinywav_open_read(&tw, "path/to/input.wav", TW_SPLIT, TW_FLOAT32);
 
 	for (int i = 0; i < 100; i++) {
 	  // samples are always presented in float32 format
