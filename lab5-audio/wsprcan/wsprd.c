@@ -40,6 +40,8 @@
 #define PATIENCE FFTW_ESTIMATE
 fftw_plan PLAN1,PLAN2,PLAN3;
 
+TinyWav tw;
+
 unsigned char pr3[162]=
 {1,1,0,0,0,0,0,0,1,0,0,0,1,1,1,0,0,0,1,0,
     0,1,0,1,1,1,1,0,0,0,0,0,0,0,1,0,0,1,0,1,
@@ -818,7 +820,7 @@ int main(int argc, char *argv[])
         return ret;
     }
     //read wav file
-    TinyWav tw;
+
 	tinywav_open_read(&tw, "path/to/input.wav", TW_SPLIT, TW_FLOAT32);
 
 	for (int i = 0; i < 100; i++) {
