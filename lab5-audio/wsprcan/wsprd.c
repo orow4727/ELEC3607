@@ -820,7 +820,7 @@ int main(int argc, char *argv[])
 
     //write wav file
     Tinywav STDOUT_FILENO;
-    tinywav_open_write(&STDOUT_FILENO,
+    tinywav_open_write(STDOUT_FILENO,
         NUM_CHANNELS,
         SAMPLE_RATE,
         TW_FLOAT32, // the output samples will be 32-bit floats. TW_INT16 is also supported
@@ -831,7 +831,7 @@ int main(int argc, char *argv[])
 
     for (int i = 0; i < 100; i++) {
       float samples[480]; // samples are always presented in float32 format
-      tinywav_write_f(&STDOUT_FILENO, samples, sizeof(samples));
+      tinywav_write_f(STDOUT_FILENO, samples, sizeof(samples));
     }
 
     tinywav_close_write(&STDOUT_FILENO);
