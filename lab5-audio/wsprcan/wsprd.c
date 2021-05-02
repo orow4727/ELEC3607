@@ -33,8 +33,7 @@
 #define NUM_CHANNELS 1
 #define SAMPLE_RATE 48000
 
-#define TinyWav tw;
-#define tinyWav tw;
+char* tw
 //
 
 #define max(x,y) ((x) > (y) ? (x) : (y))
