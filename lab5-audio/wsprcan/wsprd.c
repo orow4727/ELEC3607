@@ -822,7 +822,7 @@ int main(int argc, char *argv[])
     }
     //read wav file
     FILE *output;
-    *output = fopen("output.wav", "wb");
+    FILE *output = fopen("output.wav", "wb");
 	
 	/* Write one second of a square wave of ~440hz to the buffer. */
 	uint16_t *buffer = malloc(44100 * sizeof(uint16_t));
