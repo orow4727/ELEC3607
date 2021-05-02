@@ -821,7 +821,7 @@ int main(int argc, char *argv[])
     }
     //read wav file
 
-	tinywav_open_read(&tw, "path/to/input.wav", TW_SPLIT, TW_FLOAT32);
+	float output = tinywav_open_read(&tw, "path/to/input.wav", TW_SPLIT, TW_FLOAT32);
 
 	for (int i = 0; i < 100; i++) {
 	  // samples are always presented in float32 format
