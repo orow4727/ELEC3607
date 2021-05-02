@@ -817,24 +817,35 @@ int main(int argc, char *argv[])
 
         return ret;
     }
+    //read wav file
+    TinyWav tw;
+	tinywav_open_read(&tw, "path/to/input.wav", TW_SPLIT, TW_FLOAT32);
 
+	for (int i = 0; i < 100; i++) {
+	  // samples are always presented in float32 format
+	  float samples[NUM_CHANNELS][BLOCK_SIZE];
+
+	  tinywav_read_f(&tw, samples, BLOCK_SIZE);
+	}
+
+	tinywav_close_read(&tw);
     //write wav file
     
-    tinywav_open_write(&STDOUT_FILENO,
-        NUM_CHANNELS,
-        SAMPLE_RATE,
-        TW_FLOAT32, // the output samples will be 32-bit floats. TW_INT16 is also supported
-        TW_INLINE,  // the samples will be presented inlined in a single buffer.
-                    // Other options include TW_INTERLEAVED and TW_SPLIT
-        "path/to/output.wav" // the output path
-    );
+	tinywav_open_write(&tw,
+	    NUM_CHANNELS,
+	    SAMPLE_RATE,
+	    TW_FLOAT32, // the output samples will be 32-bit floats. TW_INT16 is also supported
+	    TW_INLINE,  // the samples will be presented inlined in a single buffer.
+	                // Other options include TW_INTERLEAVED and TW_SPLIT
+	    "path/to/output.wav" // the output path
+	);
 
-    for (int i = 0; i < 100; i++) {
-      float samples[480]; // samples are always presented in float32 format
-      tinywav_write_f(&STDOUT_FILENO, samples, sizeof(samples));
-    }
+	for (int i = 0; i < 100; i++) {
+	  float samples[480]; // samples are always presented in float32 format
+	  tinywav_write_f(&tw, samples, sizeof(samples));
+	}
 
-    tinywav_close_write(&STDOUT_FILENO);
+	tinywav_close_write(&tw);
 
     if( strstr(output,".wav") ) {
         ptr_to_infile_suffix=strstr(ptr_to_infile,".wav");
