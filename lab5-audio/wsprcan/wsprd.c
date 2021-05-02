@@ -32,7 +32,7 @@
 #include "tinywav.h"
 #define NUM_CHANNELS 1
 #define SAMPLE_RATE 48000
-
+#define output
 
 
 #define max(x,y) ((x) > (y) ? (x) : (y))
@@ -615,7 +615,7 @@ int main(int argc, char *argv[])
     clock_t t0,t00;
     double tfano=0.0,treadwav=0.0,tcandidates=0.0,tsync0=0.0;
     double tsync1=0.0,tsync2=0.0,ttotal=0.0;
-    char output;
+    
     
     struct result { char date[7]; char time[5]; double sync; double snr;
                     double dt; double freq; char message[23]; double drift;
