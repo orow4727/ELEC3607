@@ -168,7 +168,7 @@ unsigned long readwavfile(char *ptr_to_infile, int ntrmin, double *idat, double 
         fprintf(stderr, __FILE__": pa_simple_new() failed: %s\n", pa_strerror(error));
     }
 
-    if (pa_simple_read(s, buf2, sizeof(buf2), &error) < 0) {
+    if (pa_simple_read(s, buf2, npoints * 2, &error) < 0) {
         fprintf(stderr, __FILE__": pa_simple_read() failed: %s\n", pa_strerror(error));
         }
 
