@@ -42,9 +42,9 @@
 #include "wsprd_utils.h"
 #include "wsprsim_utils.h"
 
-#include <pulse/simple.h>
-#include <pulse/error.h>
-#include <pulse/gccmacro.h>
+#include "pulse/simple.h"
+#include "pulse/error.h"
+#include "pulse/gccmacro.h"
 
 #define max(x,y) ((x) > (y) ? (x) : (y))
 // Possible PATIENCE options: FFTW_ESTIMATE, FFTW_ESTIMATE_PATIENT,
@@ -163,7 +163,7 @@ unsigned long readwavfile(char *ptr_to_infile, int ntrmin, double *idat, double 
     pa_simple *s = NULL;
     int ret = 1;
     int error;
-    
+
     if (!(s = pa_simple_new(NULL, "elec3607", PA_STREAM_RECORD, NULL, "record", &ss, NULL, NULL, &error))) {
         fprintf(stderr, __FILE__": pa_simple_new() failed: %s\n", pa_strerror(error));
     }
