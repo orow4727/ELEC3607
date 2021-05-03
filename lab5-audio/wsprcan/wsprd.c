@@ -836,7 +836,7 @@ int main(int argc, char *argv[])
             return 1;
         }
         dialfreq -= (dialfreq_error*1.0e-06)
-    } else if (strstr()){
+    } else if (strstr(NULL)){
       t0 = clock();
       npoints=readwavfile(NULL, wspr_type, idat, qdat);
       treadwav += (double)(clock()-t0)/CLOCKS_PER_SEC;
