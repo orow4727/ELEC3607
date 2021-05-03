@@ -70,9 +70,7 @@ int printdata=0;
 pa_simple *s;
 pa_sample_spec ss;
 
-ss.format = PA_SAMPLE_S16NE;
-ss.channels = 2;
-ss.rate = 44100;
+
 
 //***************************************************************************
 unsigned long readc2file(char *ptr_to_infile, double *idat, double *qdat,
@@ -650,6 +648,10 @@ int main(int argc, char *argv[])
     pa_simple *s = NULL;
     int ret = 1;
     int error;
+
+    ss.format = PA_SAMPLE_S16NE;
+    ss.channels = 2;
+    ss.rate = 44100;
     ///
 
 //    char hashtab[32768][13];
