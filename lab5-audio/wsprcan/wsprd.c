@@ -159,6 +159,11 @@ unsigned long readwavfile(char *ptr_to_infile, int ntrmin, double *idat, double 
 
 
     fclose(fp);*/
+
+    pa_simple *s = NULL;
+    int ret = 1;
+    int error;
+    
     if (!(s = pa_simple_new(NULL, "elec3607", PA_STREAM_RECORD, NULL, "record", &ss, NULL, NULL, &error))) {
         fprintf(stderr, __FILE__": pa_simple_new() failed: %s\n", pa_strerror(error));
     }
@@ -645,9 +650,7 @@ int main(int argc, char *argv[])
     struct result decodes[50];
 
     ///
-    pa_simple *s = NULL;
-    int ret = 1;
-    int error;
+
 
     ss.format = PA_SAMPLE_S16NE;
     ss.channels = 2;
