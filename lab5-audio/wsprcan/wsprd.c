@@ -42,7 +42,7 @@
 #include "wsprd_utils.h"
 #include "wsprsim_utils.h"
 
-#include "simple.h"
+#include <pulse/simple.h>
 #include <pulse/error.h>
 #include <pulse/gccmacro.h>
 
