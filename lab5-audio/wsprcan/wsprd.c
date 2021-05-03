@@ -42,9 +42,9 @@
 #include "wsprd_utils.h"
 #include "wsprsim_utils.h"
 
-#include "pulse/simple.h"
-#include "pulse/error.h"
-#include "pulse/gccmacro.h"
+#include "simple.h"
+#include "error.h"
+#include "gccmacro.h"
 
 #define max(x,y) ((x) > (y) ? (x) : (y))
 // Possible PATIENCE options: FFTW_ESTIMATE, FFTW_ESTIMATE_PATIENT,
