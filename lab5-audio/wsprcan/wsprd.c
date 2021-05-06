@@ -125,11 +125,13 @@ unsigned long readwavfile(char *ptr_to_infile, int ntrmin, double *idat, double 
         .rate = 12000,
         .channels = 1
 
+
+    };
+    // these should already be define>?>?
     xss.format = PA_SAMPLE_S16LE;
     xss.channels = 1;
     xss.rate = 12000;
-    };
-
+    //
     pa_simple *s = NULL;
     int ret = 1;
     int error;
