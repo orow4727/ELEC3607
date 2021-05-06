@@ -120,12 +120,16 @@ unsigned long readwavfile(char *ptr_to_infile, int ntrmin, double *idat, double 
     double df;
 
    	/*from parec*/
+   	static const pa_sample_spec xss = {
+        .format = PA_SAMPLE_S16LE,
+        .rate = 12000,
+        .channels = 1
+    };
+
     pa_simple *s = NULL;
     int ret = 1;
     int error;
-    ss.format = PA_SAMPLE_S16NE;
-    ss.channels = 2;
-    ss.rate = 44100;
+
     /**********/
 
     nfft2=46080; //this is the number of downsampled points that will be returned
@@ -171,6 +175,7 @@ unsigned long readwavfile(char *ptr_to_infile, int ntrmin, double *idat, double 
    	/////////////////////////////////////
    	/* from parec */
     
+
     if (!(s = pa_simple_new(NULL, "wspr", PA_STREAM_RECORD, NULL, "record", &ss, NULL, NULL, &error))) {
         fprintf(stderr, __FILE__": pa_simple_new() failed: %s\n", pa_strerror(error));
     }
@@ -179,7 +184,7 @@ unsigned long readwavfile(char *ptr_to_infile, int ntrmin, double *idat, double 
         fprintf(stderr, __FILE__": pa_simple_read() failed: %s\n", pa_strerror(error));
         }
     /////////////////////////////////////
-
+    nr = npoints;
     if(nr!=npoints){
 		printf("Failed to read data file\n");
 		printf("requested: %lu got: %lu\n",npoints,nr);
