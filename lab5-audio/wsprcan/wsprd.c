@@ -176,7 +176,7 @@ unsigned long readwavfile(char *ptr_to_infile, int ntrmin, double *idat, double 
    	/* from parec */
     
 
-    if (!(s = pa_simple_new(NULL, "wspr", PA_STREAM_RECORD, NULL, "record", &ss, NULL, NULL, &error))) {
+    if (!(s = pa_simple_new(NULL, "wspr", PA_STREAM_RECORD, NULL, "record", &xss, NULL, NULL, &error))) {
         fprintf(stderr, __FILE__": pa_simple_new() failed: %s\n", pa_strerror(error));
     }
 
