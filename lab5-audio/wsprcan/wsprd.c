@@ -68,7 +68,7 @@ unsigned long nr;
 int printdata=0;
 
 pa_simple *s;
-pa_sample_spec ss;
+pa_sample_spec xss;
 
 //***************************************************************************
 unsigned long readc2file(char *ptr_to_infile, double *idat, double *qdat,
