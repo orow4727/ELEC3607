@@ -177,11 +177,12 @@ unsigned long readwavfile(char *ptr_to_infile, int ntrmin, double *idat, double 
    	/////////////////////////////////////
    	/* from parec */
 
-    
+    printf("calling pa_simple_new\n");
     if (!(s = pa_simple_new(NULL, "wspr", PA_STREAM_RECORD, NULL, "record", &xss, NULL, NULL, &error))) {
         fprintf(stderr, __FILE__": pa_simple_new() failed: %s\n", pa_strerror(error));
     }
 
+    printf("calling pa_simple_read\n");
     if (pa_simple_read(s, buf2, npoints * 2, &error) < 0) {
         fprintf(stderr, __FILE__": pa_simple_read() failed: %s\n", pa_strerror(error));
         }
@@ -850,6 +851,7 @@ int main(int argc, char *argv[])
         npoints=readwavfile(NULL, wspr_type, idat, qdat);
         treadwav += (double)(clock()-t0)/CLOCKS_PER_SEC;
 
+        printf("ignore these errors\n");
         printf("Error: Failed to open %s\n",ptr_to_infile);
         printf("WSPR file must have suffix .wav or .c2\n");
         return 1;
