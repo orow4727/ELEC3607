@@ -762,11 +762,13 @@ int main(int argc, char *argv[])
             case 'z':
                 bias=strtod(optarg,NULL); //fano metric bias (default is 0.42)
                 break;
+            case 'p':
+            	break;
             case '?':
                 usage();
-                break;
-            case 'pulseaudio':
-            	return 1;
+                return 1;
+            
+
 
         }
     }
