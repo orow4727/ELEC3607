@@ -764,7 +764,10 @@ int main(int argc, char *argv[])
                 break;
             case '?':
                 usage();
-                return 1;
+                break;
+            case 'pulseaudio':
+            	return 1;
+
         }
     }
 
