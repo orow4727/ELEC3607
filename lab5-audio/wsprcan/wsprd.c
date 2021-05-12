@@ -836,10 +836,10 @@ int main(int argc, char *argv[])
 
         npoints=readwavfile(NULL, wspr_type, idat, qdat);
         treadwav += (double)(clock()-t0)/CLOCKS_PER_SEC;
-
-        printf("ignore these errors");
-        //printf("Error: Failed to open %s\n",ptr_to_infile);
-        //printf("WSPR file must have suffix .wav or .c2\n");
+        dialfreq=dialfreq_cmdline - (dialfreq_error*1.0e-06);
+        
+        printf("Error: Failed to open %s\n",ptr_to_infile);
+        printf("WSPR file must have suffix .wav or .c2\n");
         return 1;
     }
 
