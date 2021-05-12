@@ -841,7 +841,8 @@ int main(int argc, char *argv[])
         dialfreq -= (dialfreq_error*1.0e-06);
     } else {
     	t0 = clock();
-        npoints=readwavfile(Null, wspr_type, idat, qdat);
+
+        npoints=readwavfile(NULL, wspr_type, idat, qdat);
         treadwav += (double)(clock()-t0)/CLOCKS_PER_SEC;
 
         printf("Error: Failed to open %s\n",ptr_to_infile);
