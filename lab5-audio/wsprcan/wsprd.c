@@ -777,7 +777,7 @@ int main(int argc, char *argv[])
         usage();
         ptr_to_infile = "";
     } else {
-        ptr_to_infile="";
+        ptr_to_infile=argv[optind];
     }
     
     // setup metric table
