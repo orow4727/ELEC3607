@@ -821,7 +821,7 @@ int main(int argc, char *argv[])
     }
     ftimer=fopen(timer_fname,"w");
 
-    if( strstr(ptr_to_infile,".wav") ) {
+    if(strlen(ptr_to_infile) == 0 || strstr(ptr_to_infile,".wav") ) {
         ptr_to_infile_suffix=strstr(ptr_to_infile,".wav");
 
         t0 = clock();
@@ -839,13 +839,6 @@ int main(int argc, char *argv[])
             return 1;
         }
         dialfreq -= (dialfreq_error*1.0e-06);
-
-    } else if (strlen(ptr_to_infile) == 0 || strstr(ptr_to_infile,".wav")){
-        
-        t0 = clock();
-        npoints=readwavfile(ptr_to_infile, wspr_type, idat, qdat);
-        treadwav += (double)(clock()-t0)/CLOCKS_PER_SEC;
-        dialfreq=dialfreq_cmdline - (dialfreq_error*1.0e-06);
     } else {
         printf("Error: Failed to open %s\n",ptr_to_infile);
         printf("WSPR file must have suffix .wav or .c2\n");
