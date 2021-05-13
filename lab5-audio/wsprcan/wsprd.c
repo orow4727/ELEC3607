@@ -180,7 +180,7 @@ unsigned long readwavfile(char *ptr_to_infile, int ntrmin, double *idat, double 
 		return 1;
 	}
 
-	fprintf("npoints",npoints)
+	fprintf("npoints",npoints);
     realin=(double*) fftw_malloc(sizeof(double)*nfft1);
     fftout=(fftw_complex*) fftw_malloc(sizeof(fftw_complex)*nfft1);
     PLAN1 = fftw_plan_dft_r2c_1d(nfft1, realin, fftout, PATIENCE);
@@ -193,7 +193,7 @@ unsigned long readwavfile(char *ptr_to_infile, int ntrmin, double *idat, double 
     for (i=npoints; i<nfft1; i++) {
         realin[i]=0.0;
     }
-    fprintf("realin",realin)
+    fprintf("realin",realin);
     free(buf2);
     fftw_execute(PLAN1);
     fftw_free(realin);
