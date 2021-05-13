@@ -193,7 +193,7 @@ unsigned long readwavfile(char *ptr_to_infile, int ntrmin, double *idat, double 
     for (i=npoints; i<nfft1; i++) {
         realin[i]=0.0;
     }
-
+    fprintf("realin",realin)
     free(buf2);
     fftw_execute(PLAN1);
     fftw_free(realin);
