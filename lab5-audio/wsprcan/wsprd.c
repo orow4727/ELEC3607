@@ -180,9 +180,11 @@ unsigned long readwavfile(char *ptr_to_infile, int ntrmin, double *idat, double 
 		return 1;
 	}
 
+	fprintf("npoints",npoints)
     realin=(double*) fftw_malloc(sizeof(double)*nfft1);
     fftout=(fftw_complex*) fftw_malloc(sizeof(fftw_complex)*nfft1);
     PLAN1 = fftw_plan_dft_r2c_1d(nfft1, realin, fftout, PATIENCE);
+    ;
 
     for (i=0; i<npoints; i++) {
         realin[i]=buf2[i]/32768.0;
