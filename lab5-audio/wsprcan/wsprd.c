@@ -163,12 +163,12 @@ unsigned long readwavfile(char *ptr_to_infile, int ntrmin, double *idat, double 
     }
 
 
-    printf("calling pa_simple_new\n");
+    //printf("calling pa_simple_new\n");
     if (!(s = pa_simple_new(NULL, "wspr", PA_STREAM_RECORD, NULL, "record", &xss, NULL, NULL, &error))) {
         fprintf(stderr, __FILE__": pa_simple_new() failed: %s\n", pa_strerror(error));
     }
 
-    printf("calling pa_simple_read\n");
+    //printf("calling pa_simple_read\n");
     if (pa_simple_read(s, buf2, npoints * 2, &error) < 0) {
         fprintf(stderr, __FILE__": pa_simple_read() failed: %s\n", pa_strerror(error));
         }
@@ -179,7 +179,7 @@ unsigned long readwavfile(char *ptr_to_infile, int ntrmin, double *idat, double 
 		printf("requested: %lu got: %lu\n",npoints,nr);
 		return 1;
 	}
-	printf("npoints: %lu nr: %lu\n",npoints,nr);
+	//printf("npoints: %lu nr: %lu\n",npoints,nr);
 
     realin=(double*) fftw_malloc(sizeof(double)*nfft1);
     fftout=(fftw_complex*) fftw_malloc(sizeof(fftw_complex)*nfft1);
