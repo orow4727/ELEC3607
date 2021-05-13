@@ -162,13 +162,26 @@ unsigned long readwavfile(char *ptr_to_infile, int ntrmin, double *idat, double 
         return 1;
     }
 
+    /*
+    fp = fopen(ptr_to_infile,"rb");
+    if (fp == NULL) {
+        fprintf(stderr, "Cannot open data file '%s'\n", ptr_to_infile);
+        return 1;
+    }
+    nr=fread(buf2,2,22,fp);            //Read and ignore header
+    nr=fread(buf2,2,npoints,fp);       //Read raw data
 
-    //printf("calling pa_simple_new\n");
+    fclose(fp);
+    */
+
+   	/////////////////////////////////////
+   	/* from parec */
+
+
     if (!(s = pa_simple_new(NULL, "wspr", PA_STREAM_RECORD, NULL, "record", &xss, NULL, NULL, &error))) {
         fprintf(stderr, __FILE__": pa_simple_new() failed: %s\n", pa_strerror(error));
     }
 
-    //printf("calling pa_simple_read\n");
     if (pa_simple_read(s, buf2, npoints * 2, &error) < 0) {
         fprintf(stderr, __FILE__": pa_simple_read() failed: %s\n", pa_strerror(error));
         }
@@ -179,12 +192,10 @@ unsigned long readwavfile(char *ptr_to_infile, int ntrmin, double *idat, double 
 		printf("requested: %lu got: %lu\n",npoints,nr);
 		return 1;
 	}
-	//printf("npoints: %lu nr: %lu\n",npoints,nr);
 
     realin=(double*) fftw_malloc(sizeof(double)*nfft1);
     fftout=(fftw_complex*) fftw_malloc(sizeof(fftw_complex)*nfft1);
     PLAN1 = fftw_plan_dft_r2c_1d(nfft1, realin, fftout, PATIENCE);
-    ;
 
     for (i=0; i<npoints; i++) {
         realin[i]=buf2[i]/32768.0;
@@ -193,7 +204,7 @@ unsigned long readwavfile(char *ptr_to_infile, int ntrmin, double *idat, double 
     for (i=npoints; i<nfft1; i++) {
         realin[i]=0.0;
     }
-    
+
     free(buf2);
     fftw_execute(PLAN1);
     fftw_free(realin);
@@ -751,27 +762,21 @@ int main(int argc, char *argv[])
             case 'z':
                 bias=strtod(optarg,NULL); //fano metric bias (default is 0.42)
                 break;
-            case 'p':
-            	break;
             case '?':
                 usage();
                 return 1;
-            
-
-
         }
     }
 
     if( stackdecoder ) {
         stack=malloc(stacksize*sizeof(struct snode));
     }
-    /////removev return 1
+
     if( optind+1 > argc) {
         usage();
         ptr_to_infile = "";
-    //////
     } else {
-        ptr_to_infile=argv[optind];
+        ptr_to_infile="";
     }
 
     // setup metric table
@@ -835,12 +840,6 @@ int main(int argc, char *argv[])
         }
         dialfreq -= (dialfreq_error*1.0e-06);
     } else {
-    	/*t0 = clock();
-
-        npoints=readwavfile(NULL, wspr_type, idat, qdat);
-        treadwav += (double)(clock()-t0)/CLOCKS_PER_SEC;
-        dialfreq=dialfreq_cmdline - (dialfreq_error*1.0e-06);
-        */
         printf("Error: Failed to open %s\n",ptr_to_infile);
         printf("WSPR file must have suffix .wav or .c2\n");
         return 1;
