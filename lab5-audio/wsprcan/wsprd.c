@@ -775,7 +775,7 @@ int main(int argc, char *argv[])
     
     if( optind+1 > argc) {
         usage();
-        ptr_to_infile = "";
+        ptr_to_infile = ".wav";
     } else {
         ptr_to_infile=argv[optind];
     }
@@ -822,7 +822,7 @@ int main(int argc, char *argv[])
     }
     ftimer=fopen(timer_fname,"w");
     
-    if( strstr(ptr_to_infile,NULL) ) {
+    if( strstr(ptr_to_infile,".wav") ) {
         ptr_to_infile_suffix=strstr(ptr_to_infile,".wav");
         
         t0 = clock();
