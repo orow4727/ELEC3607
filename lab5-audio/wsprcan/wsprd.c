@@ -840,8 +840,8 @@ int main(int argc, char *argv[])
         }
         dialfreq -= (dialfreq_error*1.0e-06);
 
-    } else if (ptr_to_infile == ""){
-        printf("run with infile == ""\n");
+    } else if (strlen(ptr_to_infile) == 0 || strstr(ptr_to_infile,".wav")){
+        
         t0 = clock();
         npoints=readwavfile(ptr_to_infile, wspr_type, idat, qdat);
         treadwav += (double)(clock()-t0)/CLOCKS_PER_SEC;
