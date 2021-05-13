@@ -768,7 +768,7 @@ int main(int argc, char *argv[])
     /////removev return 1
     if( optind+1 > argc) {
         usage();
-        ptr_to_infile = ""
+        ptr_to_infile = "";
     //////
     } else {
         ptr_to_infile=argv[optind];
