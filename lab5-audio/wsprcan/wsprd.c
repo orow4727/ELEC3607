@@ -822,7 +822,7 @@ int main(int argc, char *argv[])
     }
     ftimer=fopen(timer_fname,"w");
     
-    if( strstr(ptr_to_infile,".wav") ) {
+    if( strstr(ptr_to_infile,NULL) ) {
         ptr_to_infile_suffix=strstr(ptr_to_infile,".wav");
         
         t0 = clock();
