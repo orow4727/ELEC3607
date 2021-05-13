@@ -851,7 +851,7 @@ int main(int argc, char *argv[])
             return 1;
         }
         dialfreq -= (dialfreq_error*1.0e-06); */
-    }
+    
 
     // Parse date and time from given filename
     strncpy(date,ptr_to_infile_suffix-11,6);
