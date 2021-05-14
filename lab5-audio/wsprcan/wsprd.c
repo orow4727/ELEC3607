@@ -826,7 +826,7 @@ int main(int argc, char *argv[])
     ftimer=fopen(timer_fname,"w");
 
     if(ptr_to_infile == NULL || strstr(ptr_to_infile,".wav") ) {
-        ptr_to_infile_suffix=strstr(ptr_to_infile,".wav");
+        //ptr_to_infile_suffix=strstr(ptr_to_infile,".wav");
 
         t0 = clock();
         npoints=readwavfile(ptr_to_infile, wspr_type, idat, qdat);
