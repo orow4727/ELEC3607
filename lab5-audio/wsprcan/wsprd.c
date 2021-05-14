@@ -778,8 +778,8 @@ int main(int argc, char *argv[])
     } else {
         ptr_to_infile=argv[optind];
     }
-    char *ptr_to_infile = NULL
-    
+    char *ptr_to_infile = NULL;
+
     // setup metric table
     for(i=0; i<256; i++) {
         mettab[0][i]=round( 10*(metric_tables[2][i]-bias) );
