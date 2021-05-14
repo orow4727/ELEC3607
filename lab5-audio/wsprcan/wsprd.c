@@ -635,7 +635,10 @@ int main(int argc, char *argv[])
     unsigned char *symbols, *channel_symbols;
     signed char message[]={-9,13,-35,123,57,-39,64,0,0,0,0};
     char *callsign, *call_loc_pow;
-    char *ptr_to_infile,*ptr_to_infile_suffix;
+    char *ptr_to_infile_suffix;
+    //
+    char *ptr_to_infile = NULL;
+    //
     char *data_dir=NULL;
     char wisdom_fname[200],all_fname[200],spots_fname[200];
     char timer_fname[200],hash_fname[200];
@@ -778,7 +781,7 @@ int main(int argc, char *argv[])
     } else {
         ptr_to_infile=argv[optind];
     }
-    char *ptr_to_infile = NULL;
+    
 
     // setup metric table
     for(i=0; i<256; i++) {
