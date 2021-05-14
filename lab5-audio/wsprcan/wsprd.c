@@ -777,11 +777,11 @@ int main(int argc, char *argv[])
     }
 
     if( optind+1 > argc) {
-        *ptr_to_infile = NULL;
+        //ptr_to_infile = "";
     } else {
         ptr_to_infile=argv[optind];
     }
-    
+
 
     // setup metric table
     for(i=0; i<256; i++) {
