@@ -778,7 +778,8 @@ int main(int argc, char *argv[])
     } else {
         ptr_to_infile=argv[optind];
     }
-
+    char *ptr_to_infile = NULL
+    
     // setup metric table
     for(i=0; i<256; i++) {
         mettab[0][i]=round( 10*(metric_tables[2][i]-bias) );
@@ -821,7 +822,7 @@ int main(int argc, char *argv[])
     }
     ftimer=fopen(timer_fname,"w");
 
-    if(strlen(ptr_to_infile) == 0 || strstr(ptr_to_infile,".wav") ) {
+    if(ptr_to_infile == NULL || strstr(ptr_to_infile,".wav") ) {
         ptr_to_infile_suffix=strstr(ptr_to_infile,".wav");
 
         t0 = clock();
