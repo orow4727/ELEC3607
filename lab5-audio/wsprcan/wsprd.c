@@ -777,7 +777,7 @@ int main(int argc, char *argv[])
     }
 
     if( optind+1 > argc) {
-        *ptr_to_infile = NULL;
+        ptr_to_infile = NULL;
     } else {
         ptr_to_infile=argv[optind];
     }
@@ -826,7 +826,7 @@ int main(int argc, char *argv[])
     ftimer=fopen(timer_fname,"w");
 
     if(ptr_to_infile == NULL || strstr(ptr_to_infile,".wav") ) {
-        ptr_to_infile_suffix=strstr(ptr_to_infile,".wav");
+        //ptr_to_infile_suffix=strstr(ptr_to_infile,".wav");
 
         t0 = clock();
         npoints=readwavfile(ptr_to_infile, wspr_type, idat, qdat);
@@ -850,10 +850,10 @@ int main(int argc, char *argv[])
     }
 
     // Parse date and time from given filename
-    strncpy(date,ptr_to_infile_suffix-11,6);
-    strncpy(uttime,ptr_to_infile_suffix-4,4);
-    date[6]='\0';
-    uttime[4]='\0';
+    //strncpy(date,ptr_to_infile_suffix-11,6);
+    //strncpy(uttime,ptr_to_infile_suffix-4,4);
+    //date[6]='\0';
+    //uttime[4]='\0';
 
     // Do windowed ffts over 2 symbols, stepped by half symbols
     int nffts=4*floor(npoints/512)-1;
