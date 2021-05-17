@@ -3,12 +3,15 @@
 
 set AUDIODEV=hw:1
 
-DECODER=wsprcan/k9an-wsprd 
+DECODER=wsprcan/k9an-wsprd
 TMPOUT='_wsprd.out'
 
 decode () {
 	date
 	echo "Run decode here"
+	cd /home/elec3607/ELEC3607/lab5-audio/wsprcan/
+	./k9an-wsprd
+
 	sleep 110
 }
 
