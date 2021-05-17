@@ -1,6 +1,7 @@
 run:
 	(cd wsprcan; make)
 	bash wsprwait | tee -a wsprwait.out
+	echo "hello"
 
 clean:
 	(cd parecfile; make clean)
