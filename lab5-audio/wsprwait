@@ -6,8 +6,11 @@ set AUDIODEV=hw:1
 DECODER=wsprcan/k9an-wsprd
 TMPOUT='_wsprd.out'
 
+echo "run loopback"
 pactl load-module module-loopback source=alsa_input.platform-4010000000.pcie-pci-0000_00_02.0.analog-stereo
-cd /home/elec3607/lab3-i2c/
+
+echo "run i2c"
+cd /home/elec3607/ELEC3607/lab3-i2c/
 ./si5351
 
 decode () {
