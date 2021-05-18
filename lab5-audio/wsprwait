@@ -15,7 +15,7 @@ cd /home/debian/ELEC3607/lab3-i2c/
 
 decode () {
 	date
-	cd /home/elec3607/ELEC3607/lab5-audio/
+	cd /home/debian/ELEC3607/lab5-audio/
 	paplay data/iq-16b.wav &
 	#cd /home/elec3607/ELEC3607/lab5-audio/wsprcan/
 	./wsprcan/k9an-wsprd >> /home/debian/ELEC3607/lab5-audio/wsproutput.log

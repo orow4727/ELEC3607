@@ -46,7 +46,7 @@
 #include <pulse/error.h>
 #include <pulse/gccmacro.h>
 
-#include <gpiod.h>
+#include "gpiod.h"
 #define GPIOCHIP        0
 #define GPIOLINE        27
 
