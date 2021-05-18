@@ -20,16 +20,9 @@ void LED(void) {
         output_line = gpiod_chip_get_line(output_chip, GPIOLINE);
 
         /* config as output and set a description */
-        gpiod_line_request_output(output_line, "blink",
-                GPIOD_LINE_ACTIVE_STATE_HIGH);
-
-        for (;;)
-        {
-
-                gpiod_line_set_value(output_line, 1);
-                sleep(1);
-                gpiod_line_set_value(output_line, 0);
-        }
-
-        return 0;
-}
+        gpiod_line_request_output(output_line, "blink",GPIOD_LINE_ACTIVE_STATE_HIGH);
+        gpiod_line_set_value(output_line, 1);
+        sleep(1);
+        gpiod_line_set_value(output_line, 0);
+        return;
+      }

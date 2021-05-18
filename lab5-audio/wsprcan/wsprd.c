@@ -55,6 +55,7 @@
 // Possible PATIENCE options: FFTW_ESTIMATE, FFTW_ESTIMATE_PATIENT,
 // FFTW_MEASURE, FFTW_PATIENT, FFTW_EXHAUSTIVE
 #define PATIENCE FFTW_ESTIMATE
+
 fftw_plan PLAN1,PLAN2,PLAN3;
 
 unsigned char pr3[162]=
@@ -1004,7 +1005,7 @@ int main(int argc, char *argv[])
         // Don't waste time on signals outside of the range [fmin,fmax].
         i=0;
         for( j=0; j<npk; j++) {
-            if( freq0[j] >= fmin && freq0[j] <= fmax ) {
+            if( freq0[j] >= fmin && fr(eq0[j] <= fmax ) {
                 freq0[i]=freq0[j];
                 snr0[i]=snr0[j];
                 i++;
