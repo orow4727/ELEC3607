@@ -37,7 +37,7 @@
 #include <fftw3.h>
 
 //LED
-#include <gpiod.h>
+#include "LED.h"
 
 
 #include "fano.h"
@@ -50,10 +50,6 @@
 #include <pulse/simple.h>
 #include <pulse/error.h>
 #include <pulse/gccmacro.h>
-
-//LED
-#define GPIOCHIP        0
-#define GPIOLINE        27
 
 #define max(x,y) ((x) > (y) ? (x) : (y))
 // Possible PATIENCE options: FFTW_ESTIMATE, FFTW_ESTIMATE_PATIENT,
@@ -648,15 +644,7 @@ int main(int argc, char *argv[])
     //
     char *ptr_to_infile = NULL;
     //
-    //LED
-    struct gpiod_chip *output_chip;
-    struct gpiod_line *output_line;
-    //int line_value;
-    output_chip = gpiod_chip_open_by_number(GPIOCHIP);
-    output_line = gpiod_chip_get_line(output_chip, GPIOLINE);
-    gpiod_line_request_output(output_line, "wsprdecode",
-          GPIOD_LINE_ACTIVE_STATE_HIGH);
-    //
+
     char *data_dir=NULL;
     char wisdom_fname[200],all_fname[200],spots_fname[200];
     char timer_fname[200],hash_fname[200];
@@ -1344,10 +1332,7 @@ int main(int argc, char *argv[])
                 decodes[i].message, (int)decodes[i].drift, decodes[i].cycles/81,
                 decodes[i].jitter);
         //Blink LED
-        printf("Decode Successful -> Blink LED\n");
-        gpiod_line_set_value(output_line, 1);
-        sleep(0.5);
-        gpiod_line_set_value(output_line, 0);
+        LED();
 
     }
     printf("<DecodeFinished>\n");
