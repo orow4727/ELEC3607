@@ -661,6 +661,7 @@ int main(int argc, char *argv[])
     char *ptr_to_infile_suffix;
     //
     char *ptr_to_infile = NULL;
+    bool success;
     //
 
     char *data_dir=NULL;
@@ -1332,8 +1333,10 @@ int main(int argc, char *argv[])
             }
         }
     }
+    success = false;
 
     for (i=0; i<uniques; i++) {
+        success = true;
         printf("%4s %3.0f %4.1f %10.6f %2d  %-s \n",
                decodes[i].time, decodes[i].snr,decodes[i].dt, decodes[i].freq,
                (int)decodes[i].dt, decodes[i].message);
@@ -1349,12 +1352,11 @@ int main(int argc, char *argv[])
                 decodes[i].snr, decodes[i].dt, decodes[i].freq,
                 decodes[i].message, (int)decodes[i].drift, decodes[i].cycles/81,
                 decodes[i].jitter);
-
-        led();
-        sleep(.5);
-
-          }
-
+                }
+          
+    if (success == true){
+      led();
+    }
     printf("<DecodeFinished>\n");
 
     fftw_free(fftin);
