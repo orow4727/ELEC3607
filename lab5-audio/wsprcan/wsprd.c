@@ -37,7 +37,7 @@
 #include <fftw3.h>
 
 //LED
-//#include <gpiod.h>
+#include <gpiod.h>
 
 
 #include "fano.h"
@@ -52,8 +52,8 @@
 #include <pulse/gccmacro.h>
 
 //LED
-//#define GPIOCHIP        1
-//#define GPIOLINE        24
+#define GPIOCHIP        0
+#define GPIOLINE        27
 
 #define max(x,y) ((x) > (y) ? (x) : (y))
 // Possible PATIENCE options: FFTW_ESTIMATE, FFTW_ESTIMATE_PATIENT,
@@ -1345,10 +1345,10 @@ int main(int argc, char *argv[])
                 decodes[i].message, (int)decodes[i].drift, decodes[i].cycles/81,
                 decodes[i].jitter);
         //Blink LED
-        //printf("Decode Successful -> Blink LED\n", );
-        //gpiod_line_set_value(output_line, 1);
-        //sleep(0.5);
-        //gpiod_line_set_value(output_line, 0);
+        printf("Decode Successful -> Blink LED\n", );
+        gpiod_line_set_value(output_line, 1);
+        sleep(0.5);
+        gpiod_line_set_value(output_line, 0);
 
     }
     printf("<DecodeFinished>\n");
