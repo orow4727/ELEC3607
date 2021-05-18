@@ -1344,7 +1344,7 @@ int main(int argc, char *argv[])
                 decodes[i].message, (int)decodes[i].drift, decodes[i].cycles/81,
                 decodes[i].jitter);
         //Blink LED
-        printf("Decode Successful -> Blink LED\n", );
+        printf("Decode Successful -> Blink LED\n");
         gpiod_line_set_value(output_line, 1);
         sleep(0.5);
         gpiod_line_set_value(output_line, 0);
