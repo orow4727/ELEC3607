@@ -88,7 +88,7 @@ void led(void) {
 
         printf("flash led\n");
         gpiod_line_set_value(output_line, 1);
-        sleep(1);
+        sleep(.5);
         gpiod_line_set_value(output_line, 0);
         //return;
       }
@@ -1351,7 +1351,7 @@ int main(int argc, char *argv[])
                 decodes[i].jitter);
 
         led();
-
+        sleep(.5);
 
           }
 
