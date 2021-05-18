@@ -1140,7 +1140,7 @@ enum {
  * @brief Structure holding event info.
  */
 struct gpiod_line_event {
-	struct timespec ts;
+	struct timespec *ts;
 	/**< Best estimate of time of event occurrence. */
 	int event_type;
 	/**< Type of the event that occurred. */
