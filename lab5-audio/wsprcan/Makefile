@@ -9,7 +9,7 @@ LIBS = -lfftw3 -lm -lpulse-simple -lpulse -lgpiod
 
 all:    k9an-wsprd wsprsim
 
-DEPS =  wsprsim_utils.h wsprd_utils.h fano.h jelinek.h LED.h
+DEPS =  wsprsim_utils.h wsprd_utils.h fano.h jelinek.h
 
 OBJS2 = wsprsim.o wsprsim_utils.o wsprd_utils.o tab.o fano.o nhash.o
 wsprsim: $(OBJS2)
