@@ -379,7 +379,7 @@ void sync_and_demodulate(double *id, double *qd, long np,
     } //freq loop
 
     if( mode <=1 ) {                       //Send best params back to caller
-        *sync=syncmax;1
+        *sync=syncmax;
         *shift1=best_shift;
         *f1=fbest;
         return;
