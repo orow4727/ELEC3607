@@ -649,14 +649,13 @@ int main(int argc, char *argv[])
     char *ptr_to_infile = NULL;
     //
     //LED
-    //struct gpiod_chip *output_chip;
-    //struct gpiod_line *output_line;
+    struct gpiod_chip *output_chip;
+    struct gpiod_line *output_line;
     //int line_value;
-    //output_chip = gpiod_chip_open_by_number(GPIOCHIP);
-    //output_line = gpiod_chip_get_line(output_chip, GPIOLINE);
-    //gpiod_line_request_output(output_line, "blink",
-
-    //      GPIOD_LINE_ACTIVE_STATE_HIGH);
+    output_chip = gpiod_chip_open_by_number(GPIOCHIP);
+    output_line = gpiod_chip_get_line(output_chip, GPIOLINE);
+    gpiod_line_request_output(output_line, "wsprdecode",
+          GPIOD_LINE_ACTIVE_STATE_HIGH);
     //
     char *data_dir=NULL;
     char wisdom_fname[200],all_fname[200],spots_fname[200];
