@@ -88,7 +88,7 @@ void led(void) {
 
         printf("flash led\n");
         gpiod_line_set_value(output_line, 1);
-        sleep(.5);
+        sleep(1);
         gpiod_line_set_value(output_line, 0);
         //return;
       }
