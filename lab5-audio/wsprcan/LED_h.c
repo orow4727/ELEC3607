@@ -10,7 +10,7 @@
 #define GPIOLINE        27
 
 
-void LED(void) {
+void led(void) {
         struct gpiod_chip *output_chip;
         struct gpiod_line *output_line;
         int line_value;
@@ -24,5 +24,4 @@ void LED(void) {
         gpiod_line_set_value(output_line, 1);
         sleep(1);
         gpiod_line_set_value(output_line, 0);
-        return;
       }
