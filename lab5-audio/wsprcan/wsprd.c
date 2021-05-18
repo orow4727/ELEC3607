@@ -88,8 +88,9 @@ void led(void) {
 
         printf("flash led\n");
         gpiod_line_set_value(output_line, 1);
-        sleep(.5);
+        sleep(1);
         gpiod_line_set_value(output_line, 0);
+        sleep(1);
         //return;
       }
 
@@ -1314,6 +1315,8 @@ int main(int argc, char *argv[])
             }
         }
     }
+
+
     free(idat);
     free(qdat);
     free(callsign);
@@ -1352,11 +1355,15 @@ int main(int argc, char *argv[])
                 decodes[i].snr, decodes[i].dt, decodes[i].freq,
                 decodes[i].message, (int)decodes[i].drift, decodes[i].cycles/81,
                 decodes[i].jitter);
+        led();
+        sleep(2);
                 }
-          
+
+    /*
     if (success == true){
       led();
     }
+    */
     printf("<DecodeFinished>\n");
 
     fftw_free(fftin);
