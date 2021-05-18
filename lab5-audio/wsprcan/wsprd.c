@@ -77,7 +77,7 @@ pa_sample_spec xss;
 void led(void) {
         struct gpiod_chip *output_chip;
         struct gpiod_line *output_line;
-        int line_value;
+
 
         /* open chip and get line */
         output_chip = gpiod_chip_open_by_number(GPIOCHIP);
@@ -85,10 +85,12 @@ void led(void) {
 
         /* config as output and set a description */
         gpiod_line_request_output(output_line, "blink",GPIOD_LINE_ACTIVE_STATE_HIGH);
+
+        printf("flash led\n");
         gpiod_line_set_value(output_line, 1);
         sleep(.5);
         gpiod_line_set_value(output_line, 0);
-        return;
+        //return;
       }
 
 //***************************************************************************
@@ -1347,8 +1349,9 @@ int main(int argc, char *argv[])
                 decodes[i].snr, decodes[i].dt, decodes[i].freq,
                 decodes[i].message, (int)decodes[i].drift, decodes[i].cycles/81,
                 decodes[i].jitter);
-                printf("flash led\n");
-                led();
+
+        led();
+
 
           }
 
