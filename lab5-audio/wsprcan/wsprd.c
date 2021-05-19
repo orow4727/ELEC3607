@@ -35,11 +35,6 @@
 #include <stdint.h>
 #include <time.h>
 #include <fftw3.h>
-
-//LED
-//#include <gpiod.h>
-
-
 #include "fano.h"
 #include "jelinek.h"
 #include "nhash.h"
@@ -51,9 +46,9 @@
 #include <pulse/error.h>
 #include <pulse/gccmacro.h>
 
-//LED
-//#define GPIOCHIP        1
-//#define GPIOLINE        24
+#include "gpiod.h"
+#define GPIOCHIP        0
+#define GPIOLINE        27
 
 #define max(x,y) ((x) > (y) ? (x) : (y))
 // Possible PATIENCE options: FFTW_ESTIMATE, FFTW_ESTIMATE_PATIENT,
@@ -78,6 +73,25 @@ int printdata=0;
 
 pa_simple *s;
 pa_sample_spec xss;
+
+void led(void) {
+        struct gpiod_chip *output_chip;
+        struct gpiod_line *output_line;
+
+
+        /* open chip and get line */
+        output_chip = gpiod_chip_open_by_number(GPIOCHIP);
+        output_line = gpiod_chip_get_line(output_chip, GPIOLINE);
+
+        /* config as output and set a description */
+        gpiod_line_request_output(output_line, "blink",GPIOD_LINE_ACTIVE_STATE_HIGH);
+
+        printf("flash led\n");
+        gpiod_line_set_value(output_line, 1);
+        sleep(1);
+        gpiod_line_set_value(output_line, 0);
+        //return;
+      }
 
 //***************************************************************************
 unsigned long readc2file(char *ptr_to_infile, double *idat, double *qdat,
@@ -647,17 +661,9 @@ int main(int argc, char *argv[])
     char *ptr_to_infile_suffix;
     //
     char *ptr_to_infile = NULL;
+    bool success;
     //
-    //LED
-    //struct gpiod_chip *output_chip;
-    //struct gpiod_line *output_line;
-    //int line_value;
-    //output_chip = gpiod_chip_open_by_number(GPIOCHIP);
-    //output_line = gpiod_chip_get_line(output_chip, GPIOLINE);
-    //gpiod_line_request_output(output_line, "blink",
 
-    //      GPIOD_LINE_ACTIVE_STATE_HIGH);
-    //
     char *data_dir=NULL;
     char wisdom_fname[200],all_fname[200],spots_fname[200];
     char timer_fname[200],hash_fname[200];
@@ -1308,6 +1314,8 @@ int main(int argc, char *argv[])
             }
         }
     }
+
+
     free(idat);
     free(qdat);
     free(callsign);
@@ -1327,8 +1335,10 @@ int main(int argc, char *argv[])
             }
         }
     }
+    success = false;
 
     for (i=0; i<uniques; i++) {
+        success = true;
         printf("%4s %3.0f %4.1f %10.6f %2d  %-s \n",
                decodes[i].time, decodes[i].snr,decodes[i].dt, decodes[i].freq,
                (int)decodes[i].dt, decodes[i].message);
@@ -1344,13 +1354,13 @@ int main(int argc, char *argv[])
                 decodes[i].snr, decodes[i].dt, decodes[i].freq,
                 decodes[i].message, (int)decodes[i].drift, decodes[i].cycles/81,
                 decodes[i].jitter);
-        //Blink LED
-        //printf("Decode Successful -> Blink LED\n", );
-        //gpiod_line_set_value(output_line, 1);
-        //sleep(0.5);
-        //gpiod_line_set_value(output_line, 0);
+                }
 
+
+    if (success == true){
+      led();
     }
+    
     printf("<DecodeFinished>\n");
 
     fftw_free(fftin);
