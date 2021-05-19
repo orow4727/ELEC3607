@@ -18,7 +18,7 @@ decode () {
 	cd /home/elec3607/ELEC3607/lab5-audio/wsprcan/
 	./k9an-wsprd >> /home/elec3607/ELEC3607/lab5-audio/wsproutput.log
 
-	sleep 110
+	sleep 115
 }
 
 while true
@@ -31,5 +31,5 @@ do
 		decode
 	elif ((10#$sec < 49)); then
 		sleep 10
-	fi
+	#fi
 done
