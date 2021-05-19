@@ -33,5 +33,5 @@ do
 		decode
 	elif ((10#$sec < 49)); then
 		sleep 10
-	#fi
+	fi
 done
