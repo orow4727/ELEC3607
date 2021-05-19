@@ -1,0 +1,39 @@
+Run
+
+  qemu-system-aarch64 -M virt -cpu cortex-a53 -m 1G -initrd initrd.img-4.19.0-16-arm64 \
+    -kernel vmlinuz-4.19.0-16-arm64 -append "root=/dev/vda2 console=ttyAMA0" \
+    -drive if=virtio,file=debian-3607-aarch64.qcow2,format=qcow2,id=hd \
+    -net user,hostfwd=tcp::10022-:22 -net nic -nographic -device intel-hda -device hda-duplex
+
+ssh
+
+  ssh -Y elec3607@localhost -p 10022
+
+pax11publish -d
+pax11publish -r
+
+## To decode using Philips file
+/* run paplay do quickly 1 after another */
+
+paplay data/iq-16b.wav &
+time wsprcan/k9an-wsprd data/iq-16b.wav
+####
+
+#loopback on PC
+pactl load-module module-loopback source=alsa_input.platform-4010000000.pcie-pci-0000_00_02.0.analog-stereo latency_msec=2
+
+pacmd list-sources | egrep '^\s+name: alsa_input.platform-4010000000.pcie-pci-0000_00_02.0.analog-stereo'
+
+### To record a file
+parecord --channels=1 -d alsa_input.platform-4010000000.pcie-pci-0000_00_02.0.analog-stereo data/filename.wav
+paplay data/filename.wav&
+time wsprcan/k9an-wsprd data/filename.wav
+
+###
+##For BBG with usd sound card
+pactl load-module module-loopback source=alsa_input.usb-Plugable_Plugable_USB_Audio_Device_000000000000-00.analog-stereo
+###
+
+
+#To stop
+pactl unload-module module-loopback
