@@ -581,7 +581,7 @@ unsigned long writec2file(char *c2filename, int trmin, double freq
         return 1;
     }
     memset(buffer,0,sizeof(double)*2*45000);
-ELEC3607
+
     FILE *fp;
 
     fp = fopen(c2filename,"wb");
