@@ -17,11 +17,11 @@ while true
 do
 	sec=$(date +'%S')
 	min=$(date +'%M')
-	
+
 	if (("10#$min" % 2 == 0 && "10#$sec" == 0 )); then
 		echo -n "Executing wspr_decode "
 		decode
-	elif ((10#$sec < 59.9)); then
-		sleep 10
+	elif ((10#$sec < 40)); then
+		sleep 1
 	fi
 done
