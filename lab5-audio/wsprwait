@@ -6,15 +6,22 @@ set AUDIODEV=hw:1
 DECODER=wsprcan/k9an-wsprd
 TMPOUT='_wsprd.out'
 
+#fix simple() permission denied
+pax11publish -d
+pax11publish -r
+##
+
 decode () {
 
+	#date >> /home/elec3607/M2-4/qemu/wsproutput.log
 	date >> /home/elec3607/ELEC3607/lab5-audio/wsproutput.log
-	./wsprcan/k9an-wsprd  >> /home/elec3607/ELEC3607/lab5-audio/wsproutput.log
+	#./wsprcan/k9an-wsprd  >> /home/elec3607/M2-4/qemu/wsproutput.log
+	/wsprcan/k9an-wsprd  >> /home/elec3607/ELEC3607/lab5-audio/wsproutput.log
 	# sleep 118
 }
 
 while true
-do
+0do
 	sec=$(date +'%S')
 	min=$(date +'%M')
 

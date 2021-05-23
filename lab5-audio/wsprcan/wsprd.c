@@ -46,9 +46,6 @@
 #include <pulse/error.h>
 #include <pulse/gccmacro.h>
 
-#include "gpiod.h"
-#define GPIOCHIP        0
-#define GPIOLINE        27
 
 #define max(x,y) ((x) > (y) ? (x) : (y))
 // Possible PATIENCE options: FFTW_ESTIMATE, FFTW_ESTIMATE_PATIENT,
@@ -74,24 +71,9 @@ int printdata=0;
 pa_simple *s;
 pa_sample_spec xss;
 
-void led(void) {
-        struct gpiod_chip *output_chip;
-        struct gpiod_line *output_line;
 
 
-        /* open chip and get line */
-        output_chip = gpiod_chip_open_by_number(GPIOCHIP);
-        output_line = gpiod_chip_get_line(output_chip, GPIOLINE);
 
-        /* config as output and set a description */
-        gpiod_line_request_output(output_line, "blink",GPIOD_LINE_ACTIVE_STATE_HIGH);
-
-        printf("flash led\n");
-        gpiod_line_set_value(output_line, 1);
-        sleep(1);
-        gpiod_line_set_value(output_line, 0);
-        //return;
-      }
 
 //***************************************************************************
 unsigned long readc2file(char *ptr_to_infile, double *idat, double *qdat,
@@ -599,7 +581,7 @@ unsigned long writec2file(char *c2filename, int trmin, double freq
         return 1;
     }
     memset(buffer,0,sizeof(double)*2*45000);
-
+LEC3607
     FILE *fp;
 
     fp = fopen(c2filename,"wb");
@@ -1357,10 +1339,6 @@ int main(int argc, char *argv[])
                 }
 
 
-    if (success == true){
-      led();
-    }
-    
     printf("<DecodeFinished>\n");
 
     fftw_free(fftin);
