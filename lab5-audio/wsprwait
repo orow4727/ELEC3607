@@ -8,8 +8,8 @@ TMPOUT='_wsprd.out'
 
 decode () {
 
-	date >> /wsproutput.log
-	./wsprcan/k9an-wsprd  >> /wsproutput.log
+	date >> /home/elec3607/ELEC3607/lab5-audio/wsproutput.log
+	./wsprcan/k9an-wsprd  >> /home/elec3607/ELEC3607/lab5-audio/wsproutput.log
 	# sleep 118
 }
 
