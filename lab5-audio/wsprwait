@@ -5,7 +5,7 @@ set AUDIODEV=hw:1
 
 DECODER=wsprcan/k9an-wsprd
 TMPOUT='_wsprd.out'
-
+aplay -l >> /home/debian/ELEC3607/lab5-audio/wsproutput.log
 echo "enabling loopback"
 pactl load-module module-loopback source=alsa_input.usb-Plugable_Plugable_USB_Audio_Device_000000000000-00.analog-stereo
 
@@ -14,13 +14,14 @@ cd /home/debian/ELEC3607/lab3-i2c/
 ./si5351
 
 decode () {
+	date
 	date >> /home/debian/ELEC3607/lab5-audio/wsproutput.log
-	cd /home/debian/ELEC3607/lab5-audio/
-	paplay data/iq-16b.wav &
-	#cd /home/elec3607/ELEC3607/lab5-audio/wsprcan/
-	./wsprcan/k9an-wsprd >> /home/debian/ELEC3607/lab5-audio/wsproutput.log
 
-	#sleep 110
+	cd /home/debian/ELEC3607/lab5-audio/
+	#paplay data/iq-16b.wav&
+	./wsprcan/k9an-wsprd  >> /home/debian/ELEC3607/lab5-audio/wsproutput.log
+	echo " finished"
+	# sleep 118
 }
 
 while true
@@ -31,7 +32,7 @@ do
 	if (("10#$min" % 2 == 0 && "10#$sec" == 0 )); then
 		echo -n "Executing wspr_decode "
 		decode
-	elif ((10#$sec < 49)); then
-		sleep 10
+	elif ((10#$sec < 59.9)); then
+		sleep .1
 	fi
 done
